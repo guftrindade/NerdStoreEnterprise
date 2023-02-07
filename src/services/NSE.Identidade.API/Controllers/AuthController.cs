@@ -38,7 +38,7 @@ namespace NSE.Identidade.API.Controllers
                 return Ok();
             }
 
-            return BadRequest();
+            return BadRequest(result.Errors);
         }
 
         [HttpPost("autenticar")]
