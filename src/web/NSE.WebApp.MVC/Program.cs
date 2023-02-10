@@ -1,16 +1,11 @@
-using NSE.WebApp.MVC.Configuration;
-using Serilog;
+using NSE.WebApp.MVC;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllersWithViews();
-builder.Services.AddIdentityConfiguration();
-builder.Services.AddMvcConfiguration();
+var startup = new Startup(builder.Environment);
+startup.ConfigureServices(builder.Services);
 
 var app = builder.Build();
-app.UseMvcConfiguration();
+startup.Configure(app, app.Environment);
 
-await app.RunAsync();
-
-
-//Fazer commit e criar classe startup
+app.Run();

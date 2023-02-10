@@ -7,9 +7,9 @@
             services.AddControllersWithViews();
         }
 
-        public static void UseMvcConfiguration(this WebApplication app) 
+        public static void UseMvcConfiguration(this IApplicationBuilder app, IWebHostEnvironment env) 
         {
-            if (!app.Environment.IsDevelopment())
+            if (!env.IsDevelopment())
             {
                app.UseDeveloperExceptionPage();
             }
